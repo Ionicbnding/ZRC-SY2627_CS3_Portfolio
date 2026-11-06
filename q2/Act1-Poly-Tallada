@@ -1,0 +1,55 @@
+
+# ENHANCED HOSPITAL BILLING SYSTEM
+# Activity 1 - Polymorphism
+
+# Parent Class
+class Patient:
+    def __init__(self, name, bill):
+        self.name = name
+        self.bill = bill
+
+    def calculate_bill(self):
+        return self.bill
+
+    def display_patient_type(self):
+        print("Patient Type: Regular Patient.")
+
+
+# Child Class 1
+class SeniorPatient(Patient):
+    def calculate_bill(self):
+        discount = self.bill * 0.20
+        return self.bill - discount
+
+    def display_patient_type(self):
+        print("Patient Type: Senior Citizen")
+
+
+# Child Class 2
+class PhilhealthPatient(Patient):
+    calculate_bill_discount = 0.10
+
+    def calculate_bill(self):
+        discount = self.bill * self.calculate_bill_discount
+        return self.bill - discount
+
+    def display_patient_type(self):
+        print("Patient Type: PhilHealth Member")
+
+
+patient1 = Patient("John", 5000)
+patient2 = SeniorPatient("Maria", 5000)
+patient3 = PhilhealthPatient("Pedro", 5000)
+
+
+patients = [patient1, patient2, patient3]
+
+
+for patient in patients:
+    print("----------------------------")
+    print("Patient Name:", patient.name)
+    patient.display_patient_type()
+    print("Original Bill: PHP", patient.bill)
+    print("Final Bill: PHP", patient.calculate_bill())
+
+    print("----------------------------")
